@@ -1,0 +1,18 @@
+.userContainer {
+  margin-left: 50px;
+}
+
+.infoContainer {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.name {
+  font-size: 25px;
+  margin-left: 5px;
+  text-decoration: none;
+  color: white;
+}

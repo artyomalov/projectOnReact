@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  margin: 50px 50px;
+  font-size: 50px;
+}
