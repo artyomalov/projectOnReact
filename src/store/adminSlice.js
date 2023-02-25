@@ -24,7 +24,7 @@ const adminSlice = createSlice({
   },
   reducers: {
     authorizeUser(state) {
-      state.isLogined = !state.isLogined;
+      state.isLogined = true;
     },
     logoutUSer(state) {
       state.isLogined = false;
@@ -38,5 +38,5 @@ const adminSlice = createSlice({
   },
 });
 
-export const { authorizeUser } = adminSlice.actions;
+export const { authorizeUser, logoutUSer } = adminSlice.actions;
 export default adminSlice.reducer;

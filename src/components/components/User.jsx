@@ -12,7 +12,6 @@ export default function User({
   deleteUser,
 }) {
   const dispatch = useDispatch();
-
   return (
     <div className={styles.userContainer}>
       <img src={avatar} alt={avatar} />
@@ -30,7 +29,7 @@ export default function User({
       <div>
         <button onClick={() => deleteUser(id)}>Delete!</button>
         <button>
-          <Link to={`editUser/${id}`}>Edit user</Link>
+          <Link to={`../editUser/${id}`}>Edit user</Link>
         </button>
       </div>
     </div>

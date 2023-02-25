@@ -9,7 +9,6 @@ import SendList from './components/pages/SendList';
 import EditUser from './components/pages/EditUser';
 import LoginPage from './components/pages/LoginPage';
 import RequreAuth from './hoc/RequreAuth';
-import HeaderChecker from './hoc/HeaderChecker';
 import { fetchAdminInfo } from './store/adminSlice';
 import { fetchUsers } from './store/userSlice';
 import './App.css';

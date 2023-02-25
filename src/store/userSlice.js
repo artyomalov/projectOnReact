@@ -29,7 +29,6 @@ export const createNewUser = createAsyncThunk(
         },
         body: JSON.stringify(userData),
       });
-      console.log(userData);
       if (!response.ok) {
         throw new Error('Server error');
       }
@@ -118,6 +117,9 @@ const usersSlice = createSlice({
   reducers: {
     createUser(state, action) {
       state.users.push(action.payload);
+      if (action.payload.added === true) {
+        state.selectedUsers.push(action.payload);
+      }
     },
     deleteUser(state, action) {
       state.users = state.users.filter((user) => user.id !== action.payload.id);
