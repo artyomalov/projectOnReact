@@ -33,9 +33,6 @@ export default function HeaderLayout() {
           </NavLink>
         </button>
 
-        <NavLink className={styles.link} to="login">
-          Login
-        </NavLink>
         <button type="button" onClick={logoutHandler}>
           Logout
         </button>
@@ -47,15 +44,23 @@ export default function HeaderLayout() {
   ) : (
     <>
       <header>
-        <NavLink className={styles.link} to="/">
-          Users
-        </NavLink>
-        <NavLink className={styles.link} to="sendList">
-          Send list
-        </NavLink>
-        <NavLink className={styles.link} to="login">
-          Login
-        </NavLink>
+        <button>
+          <NavLink className={styles.link} to="/">
+            Users
+          </NavLink>
+        </button>
+
+        <button>
+          <NavLink className={styles.link} to="sendList">
+            Send list
+          </NavLink>
+        </button>
+
+        <button>
+          <NavLink className={styles.link} to="login">
+            Login
+          </NavLink>
+        </button>
       </header>
       <main>
         <Outlet />
