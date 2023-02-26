@@ -14,7 +14,7 @@
       "first_name": "Janet",
       "last_name": "Weaver",
       "avatar": "https://reqres.in/img/faces/2-image.jpg",
-      "added": false
+      "added": true
     },
     {
       "id": 3,
@@ -30,7 +30,7 @@
       "first_name": "Eve",
       "last_name": "Holt",
       "avatar": "https://reqres.in/img/faces/4-image.jpg",
-      "added": false
+      "added": true
     },
     {
       "id": 5,

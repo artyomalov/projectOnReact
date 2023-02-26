@@ -7,7 +7,6 @@ export default function Users() {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const search = searchParams.get('search') || '';
-  console.log(search);
   const deleteUser = (id) => {
     dispatch(removeUser(id));
   };
@@ -19,10 +18,24 @@ export default function Users() {
     ) : (
       users
         .filter((user) => {
+          // console.log(
+          //   `${user.first_name} ${user.last_name}`
+          //     .toLowerCase()
+          //     .split(' ')
+          //     .join('')
+          // );
+          // console.log(search.toLowerCase().split(' ').join(''));
           return (
-            user.first_name.toLowerCase().includes(search.toLowerCase()) ||
-            user.last_name.toLowerCase().includes(search.toLowerCase()) ||
-            user.email.toLowerCase().includes(search.toLowerCase())
+            `${user.first_name} ${user.last_name}`
+              .toLowerCase()
+              .split(' ')
+              .join('')
+              .includes(search.toLowerCase().split(' ').join('')) ||
+            user.email
+              .toLowerCase()
+              .split(' ')
+              .join('')
+              .includes(search.toLowerCase().split(' ').join(''))
           );
         })
         .map((user) => {
@@ -39,3 +52,6 @@ export default function Users() {
     </>
   );
 }
+
+// &&
+// user.email.toLowerCase().includes(search.toLowerCase())
