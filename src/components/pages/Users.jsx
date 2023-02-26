@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { removeUser } from '../../store/userSlice';
 import User from '../components/User';
 import SearchUser from '../components/SearchUser';
+import styles from './users.module.scss';
+
 export default function Users() {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -12,19 +14,12 @@ export default function Users() {
   };
   const users = useSelector((state) => state.users.users);
   const status = useSelector((state) => state.users.status);
-  const header =
+  const userList =
     status === 'loading' ? (
       <h2>Loading...</h2>
     ) : (
       users
         .filter((user) => {
-          // console.log(
-          //   `${user.first_name} ${user.last_name}`
-          //     .toLowerCase()
-          //     .split(' ')
-          //     .join('')
-          // );
-          // console.log(search.toLowerCase().split(' ').join(''));
           return (
             `${user.first_name} ${user.last_name}`
               .toLowerCase()
@@ -43,15 +38,12 @@ export default function Users() {
         })
     );
   return (
-    <>
-      <h2>Users</h2>
+    <div className={styles.userContainer}>
+      <h2 className={styles.title}>Sendlist App</h2>
       <SearchUser search={search} setSearchParams={setSearchParams} />
-      <div>
-        <div>{header}</div>
+      <div className={styles.userList}>
+        <div>{userList}</div>
       </div>
-    </>
+    </div>
   );
 }
-
-// &&
-// user.email.toLowerCase().includes(search.toLowerCase())

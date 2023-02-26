@@ -1,0 +1,32 @@
+@import '../common_styles/commonStyles.scss';
+
+.searchContainer {
+  width: 500px;
+  height: 100px;
+  background-color: $secondary_background_color;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: $border_radius;
+}
+
+.searchLabel {
+  color: $text_color;
+  font-size: 30px;
+  font-weight: $header_font-weight;
+  border-radius: $border_radius;
+}
+
+.search {
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: $secondary_text_color;
+  background-color: $main_background_color;
+  font-weight: $header_font_weight;
+  border-style: none;
+  border-radius: $border_radius;
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import styles from './searchUser.module.scss';
 export default function SearchUser({ search, setSearchParams }) {
   const [inputValue, setInputValue] = useState(search);
   const searchHandler = (e) => {
@@ -7,10 +7,17 @@ export default function SearchUser({ search, setSearchParams }) {
     setSearchParams({ search: e.target.value });
   };
   return (
-    <input
-      type="search"
-      value={inputValue}
-      onChange={(e) => searchHandler(e)}
-    />
+    <div className={styles.searchContainer}>
+      <span className={styles.searchLabel}>Search</span>
+      <input
+        id="search"
+        className={styles.search}
+        type="search"
+        value={inputValue}
+        placeholder="search name or email"
+        autoComplete="off"
+        onChange={(e) => searchHandler(e)}
+      />
+    </div>
   );
 }

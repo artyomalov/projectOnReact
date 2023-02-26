@@ -1,69 +1,62 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import styles from './header.module.css';
+import styles from './header.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUSer } from '../../store/adminSlice';
 
 export default function HeaderLayout() {
   const adminAuth = useSelector((state) => state.admin.isLogined);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const logoutHandler = () => {
     dispatch(logoutUSer());
-    navigate('/', { replace: true });
   };
 
   const header = adminAuth ? (
     <>
-      <header>
-        <button>
+      <header className={styles.header}>
+        <div className={styles.navContainer}>
           <NavLink className={styles.link} to="/">
             Users
           </NavLink>
-        </button>
 
-        <button>
-          <NavLink className={styles.link} to="createUser">
-            Create user
-          </NavLink>
-        </button>
-
-        <button>
           <NavLink className={styles.link} to="sendList">
             Send list
           </NavLink>
-        </button>
 
-        <button type="button" onClick={logoutHandler}>
+          <NavLink className={styles.link} to="createUser">
+            Create user
+          </NavLink>
+        </div>
+
+        <NavLink to="/" onClick={logoutHandler} className={styles.navItem}>
           Logout
-        </button>
+        </NavLink>
       </header>
-      <main>
-        <Outlet />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <Outlet />
+        </div>
       </main>
     </>
   ) : (
     <>
-      <header>
-        <button>
+      <header className={styles.header}>
+        <div className={styles.navContainer}>
           <NavLink className={styles.link} to="/">
             Users
           </NavLink>
-        </button>
 
-        <button>
           <NavLink className={styles.link} to="sendList">
             Send list
           </NavLink>
-        </button>
-
-        <button>
-          <NavLink className={styles.link} to="login">
-            Login
-          </NavLink>
-        </button>
+        </div>
+        <NavLink className={styles.navItem} to="login">
+          Login
+        </NavLink>
       </header>
-      <main>
-        <Outlet />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <Outlet />
+        </div>
       </main>
     </>
   );

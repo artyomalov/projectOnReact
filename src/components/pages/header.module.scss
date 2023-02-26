@@ -1,0 +1,47 @@
+@import '../common_styles/commonStyles.scss';
+.header {
+  width: 100%;
+  height: 90px;
+  background-color: $secondary_text_color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navContainer {
+  margin-left: 20px;
+}
+
+.navItem {
+  width: 100px;
+  height: 50px;
+  color: white;
+  padding: 8px 8px 4px 8px;
+  margin-right: 35px;
+  font-size: 30px;
+  border-style: none;
+  background-color: $main_background_color;
+  cursor: pointer;
+  font-weight: $header_font_weight;
+
+  font-weight: normal;
+  border-radius: $border_radius;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.link {
+  font-size: 30px;
+  margin-left: 20px;
+  font-weight: 600;
+  color: #112d49;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 30px;
+}

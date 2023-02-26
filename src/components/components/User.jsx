@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addServerToggle } from '../../store/userSlice';
-import styles from './user.module.css';
+import styles from './user.module.scss';
 export default function User({
   id,
   email,
