@@ -5,7 +5,7 @@ export default function SingleUser() {
   const params = useParams();
   const usersList = useSelector((state) => state.users.users);
   const user = usersList.find((user) => user.id === parseInt(params.id));
-  const { first_name, last_name, avatar, email } = user;
+  const { first_name, last_name, avatar, email, info } = user;
   return (
     <div>
       <img src={avatar} alt={avatar} />
@@ -13,6 +13,7 @@ export default function SingleUser() {
         {first_name} {last_name}
       </h2>
       <p>{email}</p>
+      <p>{info}</p>
     </div>
   );
 }

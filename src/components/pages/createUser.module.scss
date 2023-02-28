@@ -1,0 +1,12 @@
+@import '../common_styles/commonStyles.scss';
+
+.createUserContainer {
+  width: 600px;
+  margin: 0 auto;
+}
+.createUserTitle {
+  text-align: center;
+  font-size: $font_size_main;
+  font-weight: $bold_font_weight;
+  color: $secondary_text_color;
+}

@@ -87,6 +87,7 @@ export const editUser = createAsyncThunk(
       first_name: editedData.first_name,
       last_name: editedData.last_name,
       email: editedData.email,
+      info: editedData.info,
     };
     try {
       const responce = await fetch(`http://localhost:3001/users/${id}`, {
@@ -141,6 +142,7 @@ const usersSlice = createSlice({
       updatedUser.email = action.payload.email;
       updatedUser.first_name = action.payload.first_name;
       updatedUser.last_name = action.payload.last_name;
+      updatedUser.info = action.payload.info;
     },
   },
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
 import { authorizeUser } from '../../store/adminSlice.js';
@@ -11,6 +11,7 @@ export default function LoginPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
+  const loginPageAdress = location.pathname;
   const adminInfo = useSelector((state) => state.admin.admin);
   const loginHandler = () => {
     const admin = adminInfo.find((admin) => admin.login === login);
@@ -28,7 +29,13 @@ export default function LoginPage() {
     setLogin('');
     setPassword('');
 
-    navigate(fromPage, { replace: false });
+    navigate(fromPage, {
+      replace: false,
+      state: {
+        fromPage,
+        loginPageAdress,
+      },
+    });
   };
 
   return (

@@ -6,7 +6,8 @@
       "first_name": "Tracey",
       "last_name": "Ramos",
       "avatar": "https://reqres.in/img/faces/6-image.jpg",
-      "added": false
+      "added": false,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     },
 
     {
@@ -15,7 +16,8 @@
       "first_name": "Janet",
       "last_name": "Weaver",
       "avatar": "https://reqres.in/img/faces/2-image.jpg",
-      "added": true
+      "added": true,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     },
     {
       "id": 3,
@@ -23,7 +25,8 @@
       "first_name": "Emma",
       "last_name": "Wong",
       "avatar": "https://reqres.in/img/faces/3-image.jpg",
-      "added": false
+      "added": false,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     },
     {
       "id": 4,
@@ -31,7 +34,8 @@
       "first_name": "Eve",
       "last_name": "Holt",
       "avatar": "https://reqres.in/img/faces/4-image.jpg",
-      "added": true
+      "added": true,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     },
     {
       "id": 5,
@@ -39,7 +43,8 @@
       "first_name": "Charles",
       "last_name": "Morris",
       "avatar": "https://reqres.in/img/faces/5-image.jpg",
-      "added": false
+      "added": false,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     },
     {
       "id": 6,
@@ -47,7 +52,8 @@
       "first_name": "George",
       "last_name": "Bluth",
       "avatar": "https://reqres.in/img/faces/1-image.jpg",
-      "added": false
+      "added": false,
+      "info": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sequi corporis provident deleniti labore temporibus atque quam aliquid! Eligendi optio, et sapiente facilis eaque commodi officia. Ratione magnam facere totam."
     }
   ],
   "admin": [

@@ -1,0 +1,54 @@
+@import '../common_styles/commonStyles.scss';
+
+.createUserForm {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.createUserItem {
+  height: 25px;
+  color: $text_color;
+  padding-left: 7px;
+  border-radius: $border_radius;
+}
+
+.createUsertextarea {
+  height: 100px;
+  color: $text_color;
+  padding-left: 7px;
+  padding-top: 3px;
+  border-radius: $border_radius;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  resize: none;
+}
+
+.imgCheckerContainer {
+  margin-top: 15px;
+  color: $secondary_text_color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createUserLabel {
+  margin-right: 250px;
+}
+
+.createUserChecker {
+  width: 15px;
+  height: 15px;
+}
+
+.createUserButton {
+  height: 40px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: $font_size_secondary;
+  font-weight: $bold_font_weight;
+  color: $text_color;
+}
