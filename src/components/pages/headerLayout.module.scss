@@ -23,7 +23,6 @@
   background-color: $main_background_color;
   cursor: pointer;
   font-weight: $header_font_weight;
-
   font-weight: normal;
   border-radius: $border_radius;
   text-align: center;
@@ -34,9 +33,17 @@
   font-size: 30px;
   margin-left: 20px;
   font-weight: 600;
-  color: #112d49;
+  color: $text_color;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    color: $main_text_opacity;
+  }
 }
 
+.active {
+  color: $main_text_opacity;
+}
 .main {
   display: flex;
   justify-content: center;

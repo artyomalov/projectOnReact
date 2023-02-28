@@ -13,7 +13,9 @@ export default function User({
 }) {
   const dispatch = useDispatch();
   return (
-    <div className={styles.userContainer}>
+    <div
+      className={added ? styles.userContainerSelected : styles.userContainer}
+    >
       <div className={styles.userCard}>
         <div className={styles.infoContainer}>
           <img className={styles.avatar} src={avatar} alt={avatar} />
@@ -21,7 +23,7 @@ export default function User({
             <Link className={styles.name} to={`../${id}`}>
               {first_name} {last_name}
             </Link>
-            <p>{email}</p>
+            <p className={styles.email}>{email}</p>
             <div className={styles.buttonContainer}>
               <button className={styles.button}>
                 <Link className={styles.editLink} to={`../editUser/${id}`}>

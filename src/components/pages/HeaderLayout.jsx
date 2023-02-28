@@ -1,7 +1,7 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import styles from './header.module.scss';
+import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUSer } from '../../store/adminSlice';
+import styles from './headerLayout.module.scss';
 
 export default function HeaderLayout() {
   const adminAuth = useSelector((state) => state.admin.isLogined);

@@ -1,37 +1,19 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createNewUser } from '../../store/userSlice';
 import styles from './createUserForm.module.scss';
-export default function CreateUserForm() {
-  const [fname, setFname] = useState('');
-  const [sname, setSname] = useState('');
-  const [email, setEmail] = useState('');
-  const [info, setInfo] = useState('');
-  const [image, setImage] = useState('');
-  const [added, setAdded] = useState(false);
-  const dispatch = useDispatch();
-  const createNewUserHandler = (e) => {
-    e.preventDefault();
-
-    if (fname && sname && email) {
-      const newUser = {
-        id: Date.now(),
-        email: email,
-        first_name: fname,
-        last_name: sname,
-        info: info,
-        avatar: image,
-        added: added,
-      };
-      dispatch(createNewUser(newUser));
-      setFname('');
-      setSname('');
-      setEmail('');
-      setInfo('');
-      setAdded(false);
-    }
-  };
-
+export default function CreateUserForm({
+  fname,
+  setFname,
+  sname,
+  setSname,
+  email,
+  setEmail,
+  info,
+  setInfo,
+  image,
+  setImage,
+  added,
+  setAdded,
+  createNewUserHandler,
+}) {
   return (
     <form className={styles.createUserForm}>
       <input
@@ -80,14 +62,6 @@ export default function CreateUserForm() {
           Added
         </label>
       </div>
-      <button
-        className={styles.createUserButton}
-        onClick={(e) => {
-          createNewUserHandler(e);
-        }}
-      >
-        Add user!
-      </button>
     </form>
   );
 }
