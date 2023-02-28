@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import User from '../components/User';
 import { removeUser } from '../../store/userSlice';
+import styles from './sendList.module.scss';
 export default function SendList() {
   const dispatch = useDispatch();
   const deleteUser = (id) => {
@@ -14,7 +15,12 @@ export default function SendList() {
         return <User key={user.id} {...user} deleteUser={deleteUser} />;
       })
     ) : (
-      <h2>There're no users on the list</h2>
+      <h2 className={styles.sendListTitle}>There're no users on the list</h2>
     );
-  return <div>{header}</div>;
+  return (
+    <div>
+      <h2 className={styles.sendListTitle}>Send list</h2>
+      {header}
+    </div>
+  );
 }

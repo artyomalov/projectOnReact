@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
 import { authorizeUser } from '../../store/adminSlice.js';
+import styles from './loginPage.module.scss';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -31,25 +32,31 @@ export default function LoginPage() {
   };
 
   return (
-    <form>
-      <h2>Hello user! Please login</h2>
-      <input
-        type="text"
-        value={login}
-        onChange={(e) => setLogin(e.target.value)}
-        autoComplete="off"
-        placeholder="login"
-      />
-      <input
-        type="text"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        autoComplete="off"
-        placeholder="password"
-      />
-      <button type="button" onClick={loginHandler}>
-        Login!
-      </button>
-    </form>
+    <>
+      <h2 className={styles.formTitle}>Hello user! Please login!</h2>
+      <form className={styles.form} autoComplete="off">
+        <input
+          className={styles.formInput}
+          type="text"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+          placeholder="login"
+        />
+        <input
+          className={styles.formInput}
+          type="text"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
+        />
+        <button
+          className={styles.formButton}
+          type="button"
+          onClick={loginHandler}
+        >
+          Login!
+        </button>
+      </form>
+    </>
   );
 }

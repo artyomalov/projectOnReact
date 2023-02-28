@@ -1,0 +1,25 @@
+@import '../common_styles/commonStyles.scss';
+
+.formTitle {
+  text-align: center;
+  font-size: $font_size_main;
+  font-weight: $bold_font_weight;
+  color: $secondary_text_color;
+  margin: 0 auto;
+}
+
+form {
+  width: 600px;
+  height: 50px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.formInput {
+  width: 35%;
+  padding-left: 20px;
+  color: $text_color;
+}
+.formButton {
+  width: 20%;
+}

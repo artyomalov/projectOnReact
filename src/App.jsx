@@ -11,7 +11,7 @@ import LoginPage from './components/pages/LoginPage';
 import RequreAuth from './hoc/RequreAuth';
 import { fetchAdminInfo } from './store/adminSlice';
 import { fetchUsers } from './store/userSlice';
-import './App.css';
+import './App.scss';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
