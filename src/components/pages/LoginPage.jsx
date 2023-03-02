@@ -8,6 +8,7 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [infoChecker, setInfoChecker] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
@@ -15,13 +16,15 @@ export default function LoginPage() {
   const adminInfo = useSelector((state) => state.admin.admin);
   const loginHandler = () => {
     const admin = adminInfo.find((admin) => admin.login === login);
-    if (admin === undefined) {
-      console.log('wrong login');
+    if (admin === undefined || admin.login !== login) {
+      setInfoChecker(false);
+      setTimeout(() => setInfoChecker(true), 2000);
       setLogin('');
       return false;
     }
     if (admin.password !== password) {
-      console.log('wrong password');
+      setInfoChecker(false);
+      setTimeout(() => setInfoChecker(true), 2000);
       setPassword('');
       return false;
     }
@@ -38,9 +41,15 @@ export default function LoginPage() {
     });
   };
 
+  const authHeader = infoChecker ? (
+    <h2 className={styles.formTitle}>Hello user! Please login!</h2>
+  ) : (
+    <h2 className={styles.formTitle}>Sorry, wrong login/password.</h2>
+  );
+
   return (
     <>
-      <h2 className={styles.formTitle}>Hello user! Please login!</h2>
+      {authHeader}
       <form className={styles.form} autoComplete="off">
         <input
           className={styles.formInput}
@@ -50,8 +59,9 @@ export default function LoginPage() {
           placeholder="login"
         />
         <input
+          autoComplete="new-password"
           className={styles.formInput}
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="password"

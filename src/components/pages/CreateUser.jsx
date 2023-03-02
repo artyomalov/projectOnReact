@@ -10,6 +10,7 @@ export default function CreateUser() {
   const [info, setInfo] = useState('');
   const [image, setImage] = useState('');
   const [added, setAdded] = useState(false);
+  const [create, setCreate] = useState(false);
   const dispatch = useDispatch();
   const createNewUserHandler = (e) => {
     e.preventDefault();
@@ -31,11 +32,17 @@ export default function CreateUser() {
       setInfo('');
       setAdded(false);
     }
+    setCreate(true);
+    setTimeout(() => setCreate(false), 800);
   };
-
+  const userCreated = !create ? (
+    <h2 className={styles.createUserTitle}>Create new user!</h2>
+  ) : (
+    <h2 className={styles.createUserTitle}>User has been created!</h2>
+  );
   return (
     <div className={styles.createUserContainer}>
-      <h2 className={styles.createUserTitle}>Create new user!</h2>
+      {userCreated}
       <CreateUserForm
         fname={fname}
         setFname={setFname}

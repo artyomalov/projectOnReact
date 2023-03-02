@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { addServerToggle } from '../../store/userSlice';
 import styles from './user.module.scss';
 export default function User({
@@ -12,6 +12,16 @@ export default function User({
   deleteUser,
 }) {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const adminAuth = useSelector((state) => state.admin.isLogined);
+  const deleteUserHandler = (id) => {
+    if (!adminAuth) {
+      navigate('/login', { replace: false, state: { from: location } });
+      return false;
+    }
+    deleteUser(id);
+  };
   return (
     <div
       className={added ? styles.userContainerSelected : styles.userContainer}
@@ -30,7 +40,10 @@ export default function User({
                   Edit user
                 </Link>
               </button>
-              <button className={styles.button} onClick={() => deleteUser(id)}>
+              <button
+                className={styles.button}
+                onClick={() => deleteUserHandler(id)}
+              >
                 Delete!
               </button>
             </div>

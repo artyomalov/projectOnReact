@@ -1,4 +1,7 @@
 @import '../common_styles/commonStyles.scss';
+.sendListContainer {
+  width: 100%;
+}
 
 .sendListTitle {
   text-align: center;
@@ -6,4 +9,15 @@
   font-weight: $bold_font_weight;
   color: $secondary_text_color;
   margin: 10px auto 0 auto;
+}
+
+.sendButton {
+  width: 100%;
+  text-align: center;
+  font-size: $font_size_main;
+  font-weight: $bold_font_weight;
+  color: $text_color;
+  margin-top: 20px;
+  border-radius: $border_radius;
+  cursor: pointer;
 }

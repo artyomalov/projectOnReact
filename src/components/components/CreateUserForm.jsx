@@ -8,14 +8,14 @@ export default function CreateUserForm({
   setEmail,
   info,
   setInfo,
-  image,
+  // image,
   setImage,
   added,
   setAdded,
-  createNewUserHandler,
+  // createNewUserHandler,
 }) {
   return (
-    <form className={styles.createUserForm}>
+    <form className={styles.createUserForm} autoComplete="off">
       <input
         className={styles.createUserItem}
         type="text"

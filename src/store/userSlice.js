@@ -57,6 +57,26 @@ export const removeUser = createAsyncThunk(
   }
 );
 
+export const sendEmails = createAsyncThunk(
+  'users/sendEmails',
+  async function (user, { rejectWithValue }) {
+    try {
+      const response = await fetch('http://localhost:3001/fakeEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      if (!response.ok) {
+        throw new Error('Server error!');
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addServerToggle = createAsyncThunk(
   'users/serverToggle',
   async function (id, { rejectWithValue, dispatch, getState }) {

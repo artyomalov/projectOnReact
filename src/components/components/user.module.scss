@@ -28,7 +28,7 @@
   margin-top: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .infoContainer {
@@ -36,7 +36,7 @@
   width: 30%;
   display: flex;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .avatar {
@@ -49,7 +49,7 @@
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-left: 20px;
 }
 
