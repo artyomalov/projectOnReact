@@ -57,26 +57,6 @@ export const removeUser = createAsyncThunk(
   }
 );
 
-export const sendEmails = createAsyncThunk(
-  'users/sendEmails',
-  async function (user, { rejectWithValue }) {
-    try {
-      const response = await fetch('http://localhost:3001/fakeEmail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      if (!response.ok) {
-        throw new Error('Server error!');
-      }
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 export const addServerToggle = createAsyncThunk(
   'users/serverToggle',
   async function (id, { rejectWithValue, dispatch, getState }) {
@@ -123,6 +103,26 @@ export const editUser = createAsyncThunk(
         throw new Error('Server.error');
       }
       dispatch(updateUser(editedData));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const sendEmails = createAsyncThunk(
+  'users/sendEmails',
+  async function (user, { rejectWithValue }) {
+    try {
+      const response = await fetch('http://localhost:3001/fakeEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      if (!response.ok) {
+        throw new Error('Server error!');
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -183,6 +183,47 @@ const usersSlice = createSlice({
     [fetchUsers.rejected]: (state, action) => {
       state.status = 'rejected';
       state.error = action.payload;
+      alert(state.error);
+    },
+    [createNewUser.fulfilled]: (state) => {
+      state.status = 'resolved';
+    },
+    [createNewUser.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload;
+      alert(state.error);
+    },
+    [removeUser.fulfilled]: (state) => {
+      state.status = 'resolved';
+    },
+    [removeUser.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload;
+      alert(state.error);
+    },
+    [addServerToggle.fulfilled]: (state) => {
+      state.status = 'resolved';
+    },
+    [addServerToggle.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload;
+      alert(state.error);
+    },
+    [editUser.fulfilled]: (state) => {
+      state.status = 'resolved';
+    },
+    [editUser.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload;
+      alert(state.error);
+    },
+    [sendEmails.fulfilled]: (state) => {
+      state.status = 'resolved';
+    },
+    [sendEmails.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload;
+      alert(state.error);
     },
   },
 });
