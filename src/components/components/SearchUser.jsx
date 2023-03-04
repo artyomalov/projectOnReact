@@ -10,7 +10,6 @@ export default function SearchUser({ search, setSearchParams }) {
     <div className={styles.searchContainer}>
       <span className={styles.searchLabel}>Search</span>
       <input
-        id="search"
         className={styles.search}
         type="search"
         value={inputValue}

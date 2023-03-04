@@ -8,7 +8,7 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [infoChecker, setInfoChecker] = useState(true);
+  const [infoChecker, setInfoChecker] = useState(true); //если false, появляется сообщение wrong login/password
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
@@ -57,9 +57,10 @@ export default function LoginPage() {
           value={login}
           onChange={(e) => setLogin(e.target.value)}
           placeholder="login"
+          autoComplete="username"
         />
         <input
-          autoComplete="new-password"
+          autoComplete="current-password"
           className={styles.formInput}
           type="password"
           value={password}

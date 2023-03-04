@@ -20,7 +20,7 @@ export const fetchUsers = createAsyncThunk(
 
 export const createNewUser = createAsyncThunk(
   'users/createNewUser',
-  async function (userData, { rejectWithValue, dispatch }) {
+  async function (userData, { rejectWithValue }) {
     try {
       const response = await fetch('http://localhost:3001/users', {
         method: 'POST',
@@ -33,7 +33,7 @@ export const createNewUser = createAsyncThunk(
         throw new Error('Server error');
       }
       const data = await response.json();
-      dispatch(createUser(data));
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -62,17 +62,18 @@ export const addServerToggle = createAsyncThunk(
   async function (id, { rejectWithValue, dispatch, getState }) {
     const user = getState().users.users.find((user) => user.id === id);
     try {
-      const responce = await fetch(`http://localhost:3001/users/${id}`, {
+      const response = await fetch(`http://localhost:3001/users/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ added: !user.added }),
       });
-      if (!responce.ok) {
+      if (!response.ok) {
         throw new Error('Server error!');
       }
-      dispatch(addToListToggle({ id }));
+      const data = await response.json();
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -81,7 +82,7 @@ export const addServerToggle = createAsyncThunk(
 
 export const editUser = createAsyncThunk(
   'users/editUser',
-  async function (editedData, { rejectWithValue, dispatch }) {
+  async function (editedData, { rejectWithValue }) {
     const id = editedData.id;
     const editedUser = {
       first_name: editedData.first_name,
@@ -102,7 +103,9 @@ export const editUser = createAsyncThunk(
       if (!responce.ok) {
         throw new Error('Server.error');
       }
-      dispatch(updateUser(editedData));
+      const data = await responce.json();
+      return data;
+      // dispatch(updateUser(editedData));
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -138,35 +141,11 @@ const usersSlice = createSlice({
     error: null,
   },
   reducers: {
-    createUser(state, action) {
-      state.users.push(action.payload);
-      if (action.payload.added === true) {
-        state.selectedUsers.push(action.payload);
-      }
-    },
     deleteUser(state, action) {
       state.users = state.users.filter((user) => user.id !== action.payload.id);
       state.selectedUsers = state.selectedUsers.filter(
         (user) => user.id !== action.payload.id
       );
-    },
-    addToListToggle(state, action) {
-      const addedUser = state.users.find(
-        (user) => user.id === action.payload.id
-      );
-      addedUser.added = !addedUser.added;
-      state.selectedUsers = state.users.filter((user) => user.added === true);
-    },
-    updateUser(state, action) {
-      const updatedUser = state.users.find(
-        (user) => user.id === action.payload.id
-      );
-      updatedUser.email = action.payload.email;
-      updatedUser.first_name = action.payload.first_name;
-      updatedUser.last_name = action.payload.last_name;
-      updatedUser.info = action.payload.info;
-      updatedUser.avatar = action.payload.avatar;
-      updatedUser.added = action.payload.added;
     },
   },
 
@@ -185,8 +164,12 @@ const usersSlice = createSlice({
       state.error = action.payload;
       alert(state.error);
     },
-    [createNewUser.fulfilled]: (state) => {
+    [createNewUser.fulfilled]: (state, action) => {
       state.status = 'resolved';
+      state.users.push(action.payload);
+      if (action.payload.added === true) {
+        state.selectedUsers.push(action.payload);
+      }
     },
     [createNewUser.rejected]: (state, action) => {
       state.status = 'rejected';
@@ -201,16 +184,30 @@ const usersSlice = createSlice({
       state.error = action.payload;
       alert(state.error);
     },
-    [addServerToggle.fulfilled]: (state) => {
+    [addServerToggle.fulfilled]: (state, action) => {
       state.status = 'resolved';
+      const addedUser = state.users.find(
+        (user) => user.id === action.payload.id
+      );
+      addedUser.added = !addedUser.added;
+      state.selectedUsers = state.users.filter((user) => user.added === true);
     },
     [addServerToggle.rejected]: (state, action) => {
       state.status = 'rejected';
       state.error = action.payload;
       alert(state.error);
     },
-    [editUser.fulfilled]: (state) => {
+    [editUser.fulfilled]: (state, action) => {
       state.status = 'resolved';
+      const updatedUser = state.users.find(
+        (user) => user.id === action.payload.id
+      );
+      updatedUser.email = action.payload.email;
+      updatedUser.first_name = action.payload.first_name;
+      updatedUser.last_name = action.payload.last_name;
+      updatedUser.info = action.payload.info;
+      updatedUser.avatar = action.payload.avatar;
+      updatedUser.added = action.payload.added;
     },
     [editUser.rejected]: (state, action) => {
       state.status = 'rejected';

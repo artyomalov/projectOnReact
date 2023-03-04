@@ -8,11 +8,9 @@ export default function CreateUserForm({
   setEmail,
   info,
   setInfo,
-  // image,
   setImage,
   added,
   setAdded,
-  // createNewUserHandler,
 }) {
   return (
     <form className={styles.createUserForm} autoComplete="off">
@@ -22,6 +20,7 @@ export default function CreateUserForm({
         placeholder="Enter user's first_name"
         onChange={(e) => setFname(e.target.value)}
         value={fname}
+        autoComplete="given-name"
       />
       <input
         className={styles.createUserItem}
@@ -29,6 +28,7 @@ export default function CreateUserForm({
         placeholder="Enter user's second_name"
         onChange={(e) => setSname(e.target.value)}
         value={sname}
+        autoComplete="family-name"
       />
       <input
         className={styles.createUserItem}
@@ -36,12 +36,14 @@ export default function CreateUserForm({
         placeholder="Enter user's email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        autoComplete="email"
       />
       <textarea
         className={styles.createUsertextarea}
         placeholder="Enter user's info"
         onChange={(e) => setInfo(e.target.value)}
         value={info}
+        autoComplete="off"
       />
 
       <div className={styles.imgCheckerContainer}>
